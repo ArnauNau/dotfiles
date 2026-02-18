@@ -1,0 +1,8 @@
+[core]
+	pager = less -R --mouse
+[user]
+	email = a@rnau.me
+	name = arnau.nau
+	signingkey = 88BBBBA8921839B2
+[commit]
+	gpgsign = true
