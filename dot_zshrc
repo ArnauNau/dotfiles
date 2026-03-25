@@ -10,7 +10,6 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 export LESS="-R --mouse"
-export GPG_TTY="${TTY:-$(tty)}"
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -118,3 +117,8 @@ zstyle ':completion:*:descriptions' format '%F{yellow}%d%f'
 
 # Show warnings when no matches are found
 zstyle ':completion:*:warnings' format '%F{red}No matches found%f'
+export GPG_TTY=$(tty)
+
+function _refresh_gpg_tty() { export GPG_TTY="$(tty)"; }
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd _refresh_gpg_tty
